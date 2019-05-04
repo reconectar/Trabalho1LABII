@@ -12,11 +12,11 @@ public class Aplicacao {
 	public static void imprimiMenu(){
 		System.out.println("\n\n### Gerenciamento de Compras Domiciliar ###");
 		System.out.println("\n                  ================================");
-		System.out.println("                  |     1 - Cadastro Itens   |");
+		System.out.println("                  |     1 - Cadastro Itens       |");
 		System.out.println("                  |     2 - Consulta Itens       |");
-		System.out.println("                  |     0 - Sair                   |");
-		System.out.println("                  =================================\n");
-		System.out.println                    ("Opção -> ");
+		System.out.println("                  |     0 - Sair                 |");
+		System.out.println("                  ================================\n");
+		System.out.print                    ("Opção -> ");
 	}
 
 	public static void main(String[] args) {
@@ -26,6 +26,7 @@ public class Aplicacao {
 			int n = 0;
 			while (n==0) {
 				imprimiMenu();
+				n=userInput.nextInt();
 				switch(n) {
 				case 1:
 					novo = new Produto();
@@ -42,6 +43,7 @@ public class Aplicacao {
 				default:
 					System.out.println("Opcao inválida!");
 				}
+				
 			}
 			System.out.println(estoque.getQtdePodres() + "produtos podres removidos!");
 			userInput.close();			
