@@ -1,4 +1,4 @@
-package EstoqueDomiciliar;
+package estoquedomiciliar;
 
 class CListaDup {
     private CCelulaDup primeira; // Referencia a primeira celula da lista (celula cabeca)

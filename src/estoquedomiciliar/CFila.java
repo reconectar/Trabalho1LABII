@@ -1,4 +1,4 @@
-package EstoqueDomiciliar;
+package estoquedomiciliar;
 
 public class CFila {
 	private CCelula frente; // Celula cabeca.

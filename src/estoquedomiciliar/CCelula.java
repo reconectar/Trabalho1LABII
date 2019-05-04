@@ -1,4 +1,4 @@
-package EstoqueDomiciliar;
+package estoquedomiciliar;
 
 public class CCelula {
 	public Object item;

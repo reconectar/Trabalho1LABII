@@ -1,4 +1,4 @@
-package EstoqueDomiciliar;
+package estoquedomiciliar;
 class CCelulaDup {
  
    public Object item; // O Item armazendo pela cÃ©lula
