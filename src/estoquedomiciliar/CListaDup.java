@@ -49,11 +49,16 @@ class CListaDup {
 	// Imprime todos os elementos da lista duplamente encadeada usando o comando
 	// while.
 	public void imprime() {
-		CCelulaDup aux = primeira.prox;
-		while (aux != null) {
-			System.out.println(aux.item);
-			aux = aux.prox;
+		if(!this.vazia()) {
+			CCelulaDup aux = primeira.prox;
+			while (aux != null) {
+				System.out.println(aux.item);
+				aux = aux.prox;
+			}			
+		}else {
+			System.out.println("Lista vazia!");
 		}
+		
 	}
 
 	// Imprime todos os elementos da lista duplamente encadeada usando o comando
