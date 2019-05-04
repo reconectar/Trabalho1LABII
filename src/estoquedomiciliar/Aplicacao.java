@@ -1,52 +1,53 @@
 package estoquedomiciliar;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Aplicacao {
 	
 	private static Scanner userInput;
-	private static Scanner fileInput;
 	private static Estoque estoque;
-	private static File arquivo;
+	private static Produto novo;
 	
-	
-	public static LocalDate registerDate (String date) throws IOException{
-		DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate produtoDate = LocalDate.parse(date, formato);
-		return produtoDate;
+	public static void imprimiMenu(){
+		System.out.println("\n\n### Gerenciamento de Compras Domiciliar ###");
+		System.out.println("\n                  ================================");
+		System.out.println("                  |     1 - Cadastro Itens   |");
+		System.out.println("                  |     2 - Consulta Itens       |");
+		System.out.println("                  |     0 - Sair                   |");
+		System.out.println("                  =================================\n");
+		System.out.println                    ("Opção -> ");
 	}
 
 	public static void main(String[] args) {
 		try {
 			estoque = new Estoque(); //inicializa o estoque
 			userInput = new Scanner(System.in);
-			
-			System.out.print("Insira o nome do produto: ");
-			String nome = userInput.nextLine();
-			System.out.println("Insira uma data de validade no formato: yyyy-MM-dd, (ex: 1993-02-19)");
-			
-			
-			LocalDate produtoDate = registerDate(userInput.nextLine());
-			userInput.close();
-			Produto novo = new Produto(nome, produtoDate);
-			estoque.writeFile(novo);
-			
-			//Logica de impressao de conteudo do arquivo
-			arquivo = new File("BancoDeDados.txt");
-			fileInput = new Scanner(arquivo);
-			while(fileInput.hasNextLine()) {
-				System.out.println(fileInput.nextLine());
+			int n = 0;
+			while (n==0) {
+				imprimiMenu();
+				switch(n) {
+				case 1:
+					novo = new Produto();
+					System.out.print("Insira o nome do produto: ");
+					novo.setNome(userInput.nextLine());
+					System.out.println("Insira uma data de validade no formato: yyyy-MM-dd, (ex: 1993-02-19)");			
+					novo.setValidade(userInput.nextLine());
+					estoque.adicionarProduto(novo);
+					estoque.removerProdutoPodre(novo); //FIXME Gambiarra
+					break;
+				case 2:
+					estoque.getProdutos().imprime();
+					break;
+				default:
+					System.out.println("Opcao inválida!");
+				}
 			}
-			
-		} catch (IOException entrada) {
+			System.out.println(estoque.getQtdePodres() + "produtos podres removidos!");
+			userInput.close();			
+		} catch (IOException e) {
 			System.out.println("Data inseridos inválidos");
-			entrada.printStackTrace();
+			e.printStackTrace();
 		} finally {
 			System.out.println("Programa encerrado com sucesso!");			
 		}
