@@ -21,7 +21,6 @@ public class Produto implements Ordenavel{
 	@Override
 	public String toString() {
 		return "Nome: " + nome + "," + " Validade: " + validade;
-		//+ System.getProperty("line.separator");
 	}
 	
 	public LocalDate getValidade() {
