@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Produto implements Ordenavel{
+public class Produto{
 	private String nome;
 	private LocalDate validade;
 	
@@ -39,12 +39,5 @@ public class Produto implements Ordenavel{
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		this.validade = LocalDate.parse(date, formato);
 	}
-
-	@Override
-	public boolean menorQue(Ordenavel o) {
-		// TODO Auto-generated method stub
-		return false;
-	}	
-
 }
 

@@ -59,10 +59,10 @@ public class Aplicacao {
 				}
 			}
 			while(!aux.vazia()) {
-				estoque.removerProdutoPodre((Produto) aux.desenfileira());
+				estoque.removerProdutoExpirado((Produto) aux.desenfileira());
 			}
-			if(estoque.getQtdePodres()>0) {
-				System.out.println(System.getProperty("line.separator") + estoque.getQtdePodres() + " produtos podres removidos! Nova lista: ");
+			if(estoque.getQtdeExpirados()>0) {
+				System.out.println(System.getProperty("line.separator") + estoque.getQtdeExpirados() + " produtos Expirados removidos! Nova lista: ");
 				imprimeLista();
 			}
 			userInput.close();
